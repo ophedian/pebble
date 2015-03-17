@@ -18,6 +18,8 @@ var mainMenu = new UI.Menu({
 		]
 	});
 
+mainMenu.show();
+
 // Create event handlers for the menu
 mainMenu.on("select", function (e) {
 	console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
@@ -32,5 +34,3 @@ mainMenu.on("select", function (e) {
 		break;
 	}
 });
-
-mainMenu.show();

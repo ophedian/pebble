@@ -10,6 +10,10 @@ var splashWindow = {};
 var parseFeed = function (data, quantity) {
 	var items = [];
 	for (var i = 0; i < quantity; i++) {
+
+		// Temperature
+		var temp = data.list[i].main.temp;
+
 		// Always upper case the description string
 		var title = data.list[i].weather[0].main;
 		title = title.charAt(0).toUpperCase() + title.substring(1);
@@ -21,7 +25,8 @@ var parseFeed = function (data, quantity) {
 		// Add to menu items array
 		items.push({
 			title : title,
-			subtitle : time
+			subtitle : time,
+			temp : temp
 		});
 	}
 
@@ -50,7 +55,7 @@ weather.update = function () {
 		console.log("Entering the weather loop");
 		for (var i = 0; i < menuItems.length; i++) {
 			weatherForecast.item(0, i, {
-				title : menuItems[i].title,
+				title : menuItems[i].title + " " + menuItems[i].temp,
 				subtitle : menuItems[i].subtitle
 			});
 		}
